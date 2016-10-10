@@ -21,7 +21,7 @@ Route::get('zamyslenia/{slug?}' , 'VersController@index');
 
 Route::group(['middleware' => 'auth'], function() {
 
-    Route::get  ('kategorie', 'GroupController@create');
+    Route::get  ('kategorie', 'GroupController@createNewGroup');
     Route::post ('kategorie', 'GroupController@store');
 
     Route::get  ('post/create', 'PostsController@create');

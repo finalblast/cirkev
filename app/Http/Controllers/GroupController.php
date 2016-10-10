@@ -4,12 +4,24 @@ namespace App\Http\Controllers;
 
 use App\Group;
 use App\Post;
+use App\User;
 use Illuminate\Http\Request;
 
 use App\Http\Requests;
 
 class GroupController extends Controller
 {
+
+    public function indexUserEmail () {
+
+        $users = User::all();
+
+        return view('admin.category')->with('groups', $groups)->with('title', 'Kategórie článkov')
+            ->with('users', $users);
+
+
+    }
+
 
 
     public function index ($slug) {
@@ -22,26 +34,16 @@ class GroupController extends Controller
             ->with('title', $category->name);
     }
 
+    public function createNewGroup() {
 
+        $groups = \App\Group::all();
+        $users = User::all();
 
-//    public function index ($slug) {
-//
-//    $category = Group::where('slug', $slug)->FirstOrFail();
-//
-//        return view('posts.index')
-//            ->with('posts', $category->posts)->with('title', $category->name);
-//    }
-
-
-
-
-    public function create() {
-
-        $groups = Group::all();
-
-        return view('admin.category')->with('groups', $groups)->with('title', 'Kategórie článkov');
+        return view('admin.category')->with('groups', $groups)->with('title', 'Kategórie článkov')
+            ->with('users', $users);
 
     }
+
 
     public function store(Request $request) {
 
@@ -60,7 +62,6 @@ class GroupController extends Controller
 
         flash()->success('Kategória vymazaná!');
         return redirect('/');
-
 
     }
 

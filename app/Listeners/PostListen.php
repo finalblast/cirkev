@@ -36,7 +36,7 @@ class PostListen
 
 //        Sending notification email about reading
         if ( $post->count_view == 103 || $post->count_view == 305 || $post->count_view == 605 || $post->count_view == 1005
-        && $post->user->send_email == 1 ) {
+        AND $post->user->send_email == 1 ) {
         \Mail::send ('emails.notification_reading',
             array(
                 'title' => $post->title,
@@ -47,7 +47,7 @@ class PostListen
             ), function($message)
             {
                 $message->from('admin@cirkevonline.sk', 'Cirkev-Online');
-                $message->to($post->user->email, 'Admin')->subject('Rekapitulácia zobrazenia článku');
+                $message->to( 'gajdosgabo@gmail.com', 'Gabo cirkev')->subject('Rekapitulácia zobrazenia článku');
             });
         }
 

@@ -11,33 +11,46 @@
 		<h1 class="box-heading text-muted">
 			{!! $title or "this is a blog, bitch" !!}
 		</h1>
+        <div class="col-sm-4">
+            <div class="panel panel-danger">
+                <div class="panel-heading">Názvy kategórií</div>
+                {!! Form::open(['url' => 'kategorie', 'method' => 'post', 'class' => 'post', 'id' => 'add-form']) !!}                <div class="panel-footer">
+                    <div class="input-group">
+                        {!! Form::text('name', null, ['class' => 'form-control', 'placeholder' => 'nová kategória']) !!}
+                        <span class="input-group-btn">
+                        <button class="btn btn-primary btn-sm">Pridať</button>
+                        </span>
+                        {{ Form::close() }}
+                    </div>
+                </div>
+                <div class="panel-body">
 
-        <div class="col-md-6">
+                    @forelse( $groups as $group )
+                                    <p><a href="{{ url('kategorie' ,$group->id) }}"> {{ $group->name }} - ({{ $group->id }})</li></a></p>
+                    @empty
+                        Žiadna kategória.
+                    @endforelse
+                </div>
 
-        <h3>Názvy kategórií</h3>
-		@forelse( $groups as $group )
+            </div>
+        </div>
 
-            <ul>
-            <li> <a href="{{ url('kategorie' ,$group->id) }}"> {{ $group->name }}</li></a>
-            </ul>
+{{--Email list--}}
+    <div class="col-md-4">
+        <div class="panel panel-primary">
+            <div class="panel-heading">Emaily</div>
+            <div class="panel-body">
+                @forelse( $users as $user )
+                    <p><a href=""> ({{ $user->id }}) {{ $user->name }} - ({{ $user->send_email }})</li></a></p>
+                @empty
+                    Žiadna kategória.
+                @endforelse
 
-		@empty
-			<p>Nie sú žiadne príspevky!</p>
-		@endforelse
+            </div>
+        </div>
+
 
     </div>
-
-
-        <div class="col-md-6">
-
-            <h3>Pridať novú kategóriu</h3>
-            {!! Form::open(['url' => 'kategorie', 'method' => 'post', 'class' => 'post', 'id' => 'add-form']) !!}
-            <div class="form-group">
-            {!! Form::text('name', null, ['class' => 'form-control', 'placeholder' => 'nová kategória']) !!}
-            </div>
-            {!! Form::button('Pridať kategóriu', ['type' => 'submit', 'class' => 'btn btn-primary pull-right']) !!}
-            {!! Form::close() !!}
-        </div>
 
 
 @endsection
