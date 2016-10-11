@@ -12,17 +12,6 @@ use App\Http\Requests;
 class GroupController extends Controller
 {
 
-    public function indexUserEmail () {
-
-        $users = User::all();
-
-        return view('admin.category')->with('groups', $groups)->with('title', 'Kategórie článkov')
-            ->with('users', $users);
-
-
-    }
-
-
 
     public function index ($slug) {
 
@@ -37,7 +26,7 @@ class GroupController extends Controller
     public function createNewGroup() {
 
         $groups = \App\Group::all();
-        $users = User::all();
+        $users = User::orderBy('send_email', 'desc')->get();
 
         return view('admin.category')->with('groups', $groups)->with('title', 'Kategórie článkov')
             ->with('users', $users);

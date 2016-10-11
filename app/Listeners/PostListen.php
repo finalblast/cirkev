@@ -38,16 +38,19 @@ class PostListen
         if ( $post->count_view == 103 || $post->count_view == 305 || $post->count_view == 605 || $post->count_view == 1005
         AND $post->user->send_email == 1 ) {
         \Mail::send ('emails.notification_reading',
-            array(
+            $data = array(
                 'title' => $post->title,
                 'text' => $post->text,
                 'pocetPozreti' => $post->count_view,
                 'user_name' => $post->user->name,
-                'slug' => $post->slug
-            ), function($message)
+                'slug' => $post->slug,
+//                for email sending
+            'userEmail'=> $post->user->email,
+            'userName'=> $post->user->name
+            ), function($message) use($data)
             {
                 $message->from('admin@cirkevonline.sk', 'Cirkev-Online');
-                $message->to( 'gajdosgabo@gmail.com', 'Gabo cirkev')->subject('Rekapitulácia zobrazenia článku');
+                $message->to( $data['userEmail'], $data['userName'])->subject('Rekapitulácia zobrazenia článku');
             });
         }
 

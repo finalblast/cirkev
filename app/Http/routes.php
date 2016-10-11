@@ -13,16 +13,20 @@
 
 
 Route::get('/', 'PostsController@index');
-Route::get('kategorie/{slug}' , 'GroupController@index');
 Route::get('online','PagesController@online');
 Route::get('megabalik-krestapnskych-knih', 'PagesController@megabalik');
 Route::get('zamyslenia/{slug?}' , 'VersController@index');
+Route::get('kategorie/{slug}' , 'GroupController@index');
 
 
 Route::group(['middleware' => 'auth'], function() {
 
     Route::get  ('kategorie', 'GroupController@createNewGroup');
     Route::post ('kategorie', 'GroupController@store');
+
+    Route::get ('kategorie/{id}', 'AdminController@newsConfirmed');
+
+
 
     Route::get  ('post/create', 'PostsController@create');
     Route::post('post', 'PostsController@store');
