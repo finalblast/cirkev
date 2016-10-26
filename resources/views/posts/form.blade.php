@@ -7,7 +7,7 @@
         border: none;
         border-radius: 4px;
         background-color: #6d0c2d;
-        font-size: 18px;
+        font-size: 15px;
         color: white;
     }</style>
 
@@ -29,16 +29,26 @@
         {!! Form::file('picture', ['class' => 'form-control']) !!}
     </div>
 
-@can('admin')
-<div class="form-group col-md-3">
-    <?php $cat= $users->toArray();
-    array_unshift($cat,'-- Vybrať --');
-    $selected = (isset($post)? $post->user->id : 0 );
-    ?>
 
-    {!!Form::select('user_id', $cat , $selected , ['class' => 'form-control'] ) !!}
-</div>
-@endcan
+    @can('admin')
+    <div class="form-group col-md-3">
+    <select class="form-control" name="user_id">
+        @foreach($users as $user)
+            <option value="{{ $user->id }}">{{ $user->name }}</option>
+        @endforeach
+    </select>
+    </div>
+
+    {{--Može sa zmazať ale neviem prečo to bez toho neide--}}
+        <div class="form-group col-md-3">
+            <?php $cat= $users->toArray();
+            array_unshift($cat,'-- Vybrať --');
+            $selected = (isset($post)? $post->user->id : 0 ); ?>
+{{--            {!! Form::select('user_id', $cat , $selected , ['class' => 'form-control'] ) !!}--}}
+        </div>
+    @endcan
+
+
 </div>
 
 {{-- Title Field --}}

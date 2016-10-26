@@ -13,7 +13,7 @@ Zdieľaním článku na Facebooku získate ešte väčšiu návčtevnosť a oboh
 </p>
 
 <p>
-    {{ $text }}
+    {{ str_limit( $text, 800) }}
 </p>
 
 

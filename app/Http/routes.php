@@ -38,6 +38,9 @@ Route::group(['middleware' => 'auth'], function() {
 
     Route::get('user/{id}/edit', ['as' => 'user.edit', 'uses' => 'UserController@edit']);
     Route::put('user/{id}/update', ['as'=>'user.update', 'uses'=>'UserController@update'] );
+    Route::get('comment/{id}/delete', 'CommentsController@destroy');
+
+    Route::get ('admin', 'AdminController@indexUsers');
 
 });
 Route::auth();

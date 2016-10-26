@@ -13,29 +13,7 @@
 		</h1>
 
 
-{{--Email list--}}
-        <table class="table table-hover table-bordered">
-            <thead class="thead-primary">
-            <tr>
-                <th>id</th>
-                <th>Meno</th>
-                <th>Email</th>
-                <th>Odber</th>
-            </tr>
-            </thead>
-            <tbody>
-                @forelse( $users as $user )
-                    <tr>
-                    <td>{{ $user->id }}</td>
-                    <td><a href="{{ url('kategorie', $user->id) }}">{{ $user->name }}</a></td>
-                    <td>{{ $user->email }}</td>
-                    <td>{{ $user->send_email }}</td>
-                    </tr>
-                @empty
-                    Žiadna kategória.
-                @endforelse
-            </tbody>
-        </table>
+
 
     </section>
 

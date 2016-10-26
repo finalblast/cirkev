@@ -50,7 +50,7 @@
                             <li><a href="{{ route('user.edit',$user->id)  }}">Profil</a></li>
                             <li><a href="{{ url('user',$user->slug)  }}">Moje články</a></li>
                             @can('admin')
-                            <li><a href="{{url('user')}}">Uživatelia</a></li>
+                            <li><a href="{{url('admin')}}">Uživatelia</a></li>
                             <li><a href="{{url('kategorie')}}">Kategórie</a></li>
                             @endcan
                             <li role="separator" class="divider"></li>

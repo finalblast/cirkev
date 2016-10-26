@@ -44,7 +44,6 @@ class UserController extends Controller
 
         $user = User::findOrFail($id);
         $user->update( $request->all() );
-
         $image = $request->file('avatar');
 
         if ($image !== null) {

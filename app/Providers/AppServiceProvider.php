@@ -64,7 +64,7 @@ class AppServiceProvider extends ServiceProvider
         view()->composer('posts.form', function($view)
         {
             $view->with('categories', Group::lists('name', 'id'));
-            $view->with('users', User::lists('name', 'id'));
+            $view->with('users', User::all());
         });
 
         view()->composer('modul.tags', function($view)

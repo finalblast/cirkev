@@ -10,6 +10,11 @@ use App\Http\Requests;
 class AdminController extends Controller
 {
 
+    public function indexUsers() {
+        $users = User::orderBy('send_email', 'desc')->get();
+        return view('admin.users')->with('users', $users);
+    }
+
     public function newsConfirmed ($id) {
         $user = User::findOrFail($id);
 

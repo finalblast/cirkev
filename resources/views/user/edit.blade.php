@@ -31,35 +31,40 @@
     </div>
 
 
-
-
     <div class="row">
         <div class="col-md-6">
-           {!! Form::model($user, ['route' => [ 'user.update', $user->id ], 'method' => 'put', 'files'=> 'true', 'class' => 'post', 'id' => 'edit-form']) !!}
+                {!! Form::model($user, ['route' => [ 'user.update', $user->id ], 'method' => 'put', 'files'=> 'true', 'class' => 'post', 'id' => 'edit-form']) !!}
+                {{-- Send email --}}
+            @can('admin')
+                {{ Form::select('send_email', array('1' => 'Zasielať', '0' => 'Nezasielať'))  }}
+            @endcan
+                {{-- Title Field --}}
+                <div class="form-group">
 
-            {{-- Title Field --}}
-            <div class="form-group">
+                    {!! Form::text('email', null, ['class' => 'form-control', 'placeholder' => 'Zmeniť email']) !!}
+                </div>
+                <div class="form-group">
+                    {!! Form::textarea('info_popis', null, ['class' => 'form-control',  'id'=>'article-ckeditor', 'placeholder' => 'Popis o autorovi']) !!}
+                </div>
+                <div class="form-group">
+                    {!! Form::file('avatar', ['class' => 'form-control']) !!}
+                </div>
 
-                {!! Form::text('email', null, ['class' => 'form-control', 'placeholder' => 'Zmeniť email']) !!}
-            </div>
-            <div class="form-group">
-                {!! Form::textarea('info_popis', null, ['class' => 'form-control',  'id'=>'article-ckeditor', 'placeholder' => 'Popis o autorovi']) !!}
-            </div>
-            <div class="form-group">
-                {!! Form::file('avatar', ['class' => 'form-control']) !!}
-            </div>
-
-            {{-- Add post Field --}}
-            <div class="form-group">
-                {!! Form::button('Uložiť', ['type' => 'submit', 'class' => 'btn btn-primary']) !!}
-            <span class="or">
-                or {!! link_back('zrušiť') !!}
-            </span>
+                {{-- Add post Field --}}
+                <div class="form-group">
+                    {!! Form::button('Uložiť', ['type' => 'submit', 'class' => 'btn btn-primary']) !!}
+                <span class="or">
+                    or {!! link_back('zrušiť') !!}
+                </span>
             </div>
                     {!! Form:: close() !!}
-        </div>
+    </div>
 
 
+
+
+
+    <div>
         {{--Show all user's articles  --}}
         <div class="col-md-6">
             <h3>Všetky články od <strong> {{ $user->name }}</strong></h3>

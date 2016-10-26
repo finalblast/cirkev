@@ -7,7 +7,7 @@
 @section('content')
 
 
-	<section class="">
+	<section>
 		<article class="full-post">
 
 			<header class="post-header">
@@ -77,31 +77,9 @@
                 @endcan
 			</div>
 
-			<footer class="post-footer">
-				@include('partials.tags')
-                {{--  @include('partials.comments')--}}
 
-               {{--Výzva /--}}
-                {{--<div style="padding: 15px;">--}}
-                {{--<h3 style="color: red">Pomôžte autorovi s propagáciou príspevku.</h3>--}}
-                {{--<span style="font-size: 18px">tým, že budete sdieľajte tento príspevok, alebo sa zapojte prakticky. Návod ako môžete--}}
-                    {{--pomôcť vám zašleme obratom.--}}
-                    {{--&nbsp;&nbsp;&nbsp;<a href="#nid" data-toggle="modal" data-target="#contact" data-whatever="@mdo" >Napíšte nám!</a>--}}
-
-                        {{--Modal pre kontaktný formulár --}}
-                              {{--<div class="modal fade" id="contact" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel">--}}
-                        {{--<div class="modal-dialog" role="document">--}}
-                            {{--<div class="modal-content">--}}
-                                {{--<div class="modal-header">--}}
-                                    {{--<button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>--}}
-                                    {{--<h4 class="modal-title" id="exampleModalLabel">Napíšte nám!</h4>--}}
-                                {{--</div>--}}
-                                {{--@include('partials.contact-form')--}}
-                            {{--</div>--}}
-                        {{--</div>--}}
-                {{--</span></div>--}}
-{{--Koniec výzvyy--}}
-			</footer>
+            @include('partials.tags')
+            @include('partials.comments')
 
 		</article>
 	</section>

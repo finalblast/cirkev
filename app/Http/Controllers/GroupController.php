@@ -26,10 +26,9 @@ class GroupController extends Controller
     public function createNewGroup() {
 
         $groups = \App\Group::all();
-        $users = User::orderBy('send_email', 'desc')->get();
 
-        return view('admin.category')->with('groups', $groups)->with('title', 'Kategórie článkov')
-            ->with('users', $users);
+
+        return view('admin.category')->with('groups', $groups)->with('title', 'Kategórie článkov');
 
     }
 
