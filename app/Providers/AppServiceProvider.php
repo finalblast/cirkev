@@ -19,6 +19,8 @@ class AppServiceProvider extends ServiceProvider
      */
     public function boot()
     {
+
+//        Extentd validator for post-form / must choose same categories in form
         \Validator::extend('seletBoxRequire', function($attribute, $value, $parameters, $validator) {
 
             if ($value<1) {
@@ -26,6 +28,24 @@ class AppServiceProvider extends ServiceProvider
             }
             return true;
         });
+
+// Poslať email pri novom uživateľovi
+        User::created(function ($user) {
+              \Mail::send('emails.userCreateNotification',
+                array(
+                    'name' => $user->name,
+                    'email' => $user->email
+
+                ), function($message) use ($user)
+                {
+                    $message->from('admin@cirkevonline.sk');
+                    $message->to($user->email, 'Admin')
+                        ->bcc('gajdosgabo@gmail.com', 'Admin')
+                        ->subject('Registrácia na Cirkev-Online.sk', $user->name);
+                });
+        } );
+
+
 
 
 
@@ -44,13 +64,13 @@ class AppServiceProvider extends ServiceProvider
         view()->composer('modul.spravy',  function($view) {
 //            $view->with('posts', Post::where('group_id', '=', 5)->orderBy('id', 'desc')->take(8)->get());
             $view->with('posts', Post::where('group_id', '=', 5)->orderBy('id', 'desc')->take(1)->get());
-            $view->with('postsNext', Post::where('group_id', '=', 5)->orderBy('id', 'desc')->skip(1) ->take(5)->get());
+            $view->with('postsNext', Post::where('group_id', '=', 5)->orderBy('id', 'desc')->skip(1) ->take(6)->get());
         });
 
 
-//        view()->composer('modul.latestcom', function($view) {
-//            $view->with('posledne_com', Comment::orderBy('text', 'desc')->take(5)->get());
-//        });
+        view()->composer('modul.latestcom', function($view) {
+            $view->with('posledne_com', Comment::orderBy('id', 'desc')->take(7)->get());
+        });
 
 
 

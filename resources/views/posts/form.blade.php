@@ -13,6 +13,7 @@
 
 <div class="col-md-12 row">
     <div class="form-group col-md-3 row">
+        <label>Kategória</label>
         <?php $cat= $categories->toArray();
         array_unshift($cat,'-- Vybrať --');
             $selected = (isset($post)? $post->group->id : 0 );
@@ -22,16 +23,19 @@
 
     {{-- Video Link --}}
     <div class="form-group col-md-3">
+        <label>Video YouTube</label>
         {!! Form::text('video_link', null, ['class' => 'form-control',  'placeholder' => 'Odkaz na video Youtube']) !!}
     </div>
 
     <div class="form-group col-md-3">
+        <label>Obrázok</label>
         {!! Form::file('picture', ['class' => 'form-control']) !!}
     </div>
 
 
     @can('admin')
     <div class="form-group col-md-3">
+        <label>Autor</label>
     <select class="form-control" name="user_id">
         @foreach($users as $user)
             <option value="{{ $user->id }}">{{ $user->name }}</option>
@@ -52,17 +56,17 @@
 </div>
 
 {{-- Title Field --}}
-<div class="form-group">
+<div id="app" class="form-group">
     <div class="input-group">
-    {!! Form::text ('title', null, ['class' => 'form-control', 'placeholder' => 'Názov článku']) !!}
-        <div class="input-group-addon">@{{ count }}</div>
+    {!! Form::text ('title', null, ['class' => 'form-control', 'placeholder' => 'Názov článku', 'v-model' => 'nadpis']) !!}
+        <div  class="input-group-addon">@{{ dlzka }}</div>
         </div>
 </div>
 
 
 {{-- Text Field --}}
 <div class="form-group">
-	{!! Form::textarea('text', null, ['class' => 'form-control', 'id'=>'article-ckeditor', 'rows' => 16, 'placeholder' => 'napíšte svoj článok']) !!}
+	{!! Form::textarea('text', null, ['class' => 'form-control', 'id'=>'article-ckeditor', 'placeholder' => 'napíšte svoj článok']) !!}
 </div>
 
 
@@ -79,15 +83,43 @@
 
 {{-- Add post Field --}}
 <div class="form-group">
-	{!! Form::button($title, ['type' => 'submit', 'class' => 'btn btn-primary',]) !!}
+	{!! Form::button($title, ['type' => 'submit', 'class' => 'btn btn-primary' ]) !!}
 	<span class="or">
 		or {!! link_back('zrušiť') !!}
 	</span>
 </div>
+
+
+
 
 {{--CK editor--}}
 <script src="{{ asset('\vendor\unisharp\laravel-ckeditor\ckeditor.js') }}"></script>
 
 <script>
     CKEDITOR.replace( 'article-ckeditor' );
+</script>
+
+<script src="{{ asset('\js\vue.js') }}"></script>
+
+<script>
+
+
+
+new Vue({
+    el: '#app',
+
+    data: {
+        nadpis: ''
+    },
+
+    computed: {
+        dlzka: function () {
+            return 200 - this.nadpis.length
+        }
+    }
+
+
+
+});
+
 </script>

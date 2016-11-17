@@ -110,6 +110,7 @@
 <script src="{{ asset('js/bootstrap.min.js') }}"></script>
 
 
+
 <!-- Latest compiled and minified JavaScript -->
 {{--<script src="{{ asset('js/jquery.js')}}"></script>--}}
 <script src="{{ asset('js/app.js') }}"></script>

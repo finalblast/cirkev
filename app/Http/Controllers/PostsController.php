@@ -35,9 +35,8 @@ class PostsController extends Controller
     }
 
     public function show ($slug) {
-
         $post = Post::whereSlug($slug)->firstOrFail();
-        \Event::fire(new PostEvent($post));
+            \Event::fire(new PostEvent($post));
         return view('posts.show')->with('post', $post)
             ->with('comments',$post->comments);
     }

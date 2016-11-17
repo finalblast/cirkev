@@ -1,5 +1,5 @@
-Pribudol nový komentár.<br>
-<span style="color: #890000; font-size: 14px;">{{ $comment_body }}</span>
+<strong>Pribudol nový komentár.</strong>
+<span style="background: silver; padding: 10px;color: #890000; font-size: 14px;">{{ $comment_body }}</span>
 
 <p>na Váš článok  <a href="www.cirkevonline.sk/{{$slug}}">{{ $title }}</a><br>
 

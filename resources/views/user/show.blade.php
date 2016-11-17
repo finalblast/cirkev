@@ -37,7 +37,7 @@
 
                 <div class="media">
 
-                    <div class="col-md-3  img-rounded"
+                    <div class="col-md-3 img-rounded"
                          style=" margin-right: 10px;">
                        @include('partials.image_title')
                     </div>

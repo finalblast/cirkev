@@ -54,7 +54,7 @@
 @section('side')
     @include('modul.category')
     @include('modul.verse')
-    {{--@include('modul.latestcom')--}}
+    @include('modul.latestcom')
     @include('modul.statistika')
     {{--@include('modul.tags')--}}
 
