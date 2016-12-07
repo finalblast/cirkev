@@ -58,8 +58,8 @@
 {{-- Title Field --}}
 <div id="app" class="form-group">
     <div class="input-group">
-    {!! Form::text ('title', null, ['class' => 'form-control', 'placeholder' => 'Názov článku', 'v-model' => 'nadpis']) !!}
-        <div  class="input-group-addon">@{{ dlzka }}</div>
+    {!! Form::text ('title', null, ['class' => 'form-control', 'placeholder' => 'Názov článku', 'v-model' => 'nadpis' ]) !!}
+        <div  class="input-group-addon">200</div>
         </div>
 </div>
 
@@ -105,21 +105,21 @@
 
 
 
-new Vue({
-    el: '#app',
+{{--new Vue({--}}
+    {{--el: '#app',--}}
 
-    data: {
-        nadpis: ''
-    },
+    {{--data: {--}}
+        {{--nadpis: '{{ $post->title }}'--}}
+    {{--},--}}
 
-    computed: {
-        dlzka: function () {
-            return 200 - this.nadpis.length
-        }
-    }
+    {{--computed: {--}}
+        {{--dlzka: function () {--}}
+            {{--return 200 - this.nadpis.length--}}
+        {{--}--}}
+    {{--}--}}
 
 
 
-});
+{{--});--}}
 
 </script>

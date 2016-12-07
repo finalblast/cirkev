@@ -28,20 +28,22 @@
                     'placeholder'=>'Vaša e-mail adresa')) !!}
                 </div>
 
-              <div class="form-group">
-                  {!! app('captcha')->display() !!}
-              </div>
+              {{--<div class="form-group">--}}
+                  {{--{!! app('captcha')->display() !!}--}}
+              {{--</div>--}}
 
-                @if ($errors->has('g-recaptcha-response') )
+                {{--@if ($errors->has('g-recaptcha-response') )--}}
 
-                    <span class="help-block">
-                        <strong>{{ $errors->first('g-recaptcha-response') }}</strong>
-                    </span>
-                @endif
-
+                    {{--<span class="help-block">--}}
+                        {{--<strong>{{ $errors->first('g-recaptcha-response') }}</strong>--}}
+                    {{--</span>--}}
+                {{--@endif--}}
+                <div class="g-recaptcha" data-sitekey="6LfEPh8TAAAAAOoTzCkcPibBsC6BH7_dFd6h7Q6q"></div>
                 <div class="form-group">
                     {!! Form::submit('Odoslať!',
                     array('class'=>'btn btn-primary')) !!}
                 </div>
+
+
                 {!! Form::close() !!}
         </div>

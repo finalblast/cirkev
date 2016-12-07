@@ -12,14 +12,14 @@
 */
 
 
-Route::get('/', 'PostsController@index');
-Route::get('online','PagesController@online');
-Route::get('megabalik-krestapnskych-knih', 'PagesController@megabalik');
-Route::get('zamyslenia/{slug?}' , 'VersController@index');
-Route::get('kategorie/{slug}' , 'GroupController@index');
+    Route::get('/', 'PostsController@index');
+    Route::get('online','PagesController@online');
+    Route::get('megabalik-krestapnskych-knih', 'PagesController@megabalik');
+    Route::get('zamyslenia/{slug?}' , 'VersController@index');
+    Route::get('kategorie/{slug}' , 'GroupController@index');
 
 
-Route::group(['middleware' => 'auth'], function() {
+    Route::group(['middleware' => 'auth'], function() {
 
     Route::get  ('kategorie', 'GroupController@createNewGroup');
     Route::post ('kategorie', 'GroupController@store');

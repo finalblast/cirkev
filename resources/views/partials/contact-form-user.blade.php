@@ -28,20 +28,34 @@
                     'placeholder'=>'Napíšte svoju správu')) !!}
                 </div>
 
+
                 <div class="form-group">
-                    {!! app('captcha')->display() !!}
+                    {!! Form::label('Som človek  3 + 2 =' ) !!}
+                    <input type="text" name="iamHuman" placeholder="Vpíšte číslo">
+                    {{--{!! Form::number('iamHuman', null,--}}
+                    {{--array('required',--}}
+                    {{--'class'=>'form-control',--}}
+                    {{--'placeholder'=>'Vpíšte číslo')) !!}--}}
                 </div>
 
-                @if ($errors->has('g-recaptcha-response') )
 
-                    <span class="help-block">
-                        <strong>{{ $errors->first('g-recaptcha-response') }}</strong>
-                    </span>
-                @endif
+                {{--<div class="form-group">--}}
+                    {{--{!! app('captcha')->display() !!}--}}
+                {{--</div>--}}
+
+                {{--@if ($errors->has('g-recaptcha-response') )--}}
+
+                    {{--<span class="help-block">--}}
+                        {{--<strong>{{ $errors->first('g-recaptcha-response') }}</strong>--}}
+                    {{--</span>--}}
+                {{--@endif--}}
+
+                {{--<div class="g-recaptcha" data-sitekey="6LfEPh8TAAAAAOoTzCkcPibBsC6BH7_dFd6h7Q6q"></div>--}}
 
                 <div class="form-group">
                     {!! Form::submit('Odoslať!',
                     array('class'=>'btn btn-primary')) !!}
                 </div>
+
                 {!! Form::close() !!}
         </div>

@@ -88,7 +88,6 @@
 
 
 @section('side')
-
     <div class="panel panel-danger">
         @if($post->user->avatar)
             <a href="{{ url('user', $post->user->slug) }}"><img class="img-rounded" src="{{ asset('users/' . $post->user->id . '/' . $post->user->avatar ) }}"  style="width: 100%"></a>

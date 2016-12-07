@@ -74,7 +74,14 @@ class PagesController extends Controller
 
 
 
-    public function contactStoreUser (CapchaRequest $request, $id) {
+
+    public function contactStoreUser (Request $request, $id) {
+
+        $this->validate($request, [
+            'iamHuman' => 'required|integer|between:5,5',
+            'email' => 'required|email',
+        ]);
+
 
         $user = User::findOrFail($id);
 
@@ -88,12 +95,42 @@ class PagesController extends Controller
             ), function($message) use ($user)
             {
                 $message->from('admin@cirkevonline.sk', 'Cirkev-online');
-                $message->to($user->email, $user->name)->cc('gajdosgabo@gmail.com')->subject('Správa pre Cirkev-Online.sk');
+                $message->to
+//                    Dočastne je to vypnuté aby som zistil či roboti to prekonajú
+//                ($user->email, $user->name)->cc
+                ('gajdosgabo@gmail.com')->subject('Správa pre Cirkev-Online.sk');
             });
         flash()->success('Správa bola odoslaná!');
         return redirect('/')->with('message', 'Správa bola odoslaná!');
 
     }
+
+
+
+
+
+//    public function contactStoreUser (CapchaRequest $request, $id) {
+//
+//
+//        $user = User::findOrFail($id);
+//
+//        \Mail::send('emails.contact-user',
+//            array(
+//                'name' => $request->get('name'),
+//                'email' => $request->get('email'),
+//                'user_message' => $request->get('message'),
+//                'user_email' => $request->get('user-id'),
+//
+//            ), function($message) use ($user)
+//            {
+//                $message->from('admin@cirkevonline.sk', 'Cirkev-online');
+//                $message->to($user->email, $user->name)->cc('gajdosgabo@gmail.com')->subject('Správa pre Cirkev-Online.sk');
+//            });
+//        flash()->success('Správa bola odoslaná!');
+//        return redirect('/')->with('message', 'Správa bola odoslaná!');
+//
+//    }
+
 
 
 
