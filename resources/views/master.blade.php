@@ -24,7 +24,6 @@
 	<main>
 		<div class="container">
 
-
             @include('partials.errors')
             @yield('video-fool')
 
@@ -32,6 +31,7 @@
 			<div class="col-md-9">
                 @include('flash::message')
             @yield('content')
+
             </div>
 
             <div class="col-md-3">
@@ -111,12 +111,9 @@
 <!-- Include all compiled plugins (below), or include individual files as needed -->
 <script src="{{ asset('js/bootstrap.min.js') }}"></script>
 
+<script src="{{ asset('js/jquery.js')}}"></script>
 
-
-<!-- Latest compiled and minified JavaScript -->
-{{--<script src="{{ asset('js/jquery.js')}}"></script>--}}
 <script src="{{ asset('js/app.js') }}"></script>
-
 
 </body>
 </html>

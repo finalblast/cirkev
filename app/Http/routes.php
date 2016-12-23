@@ -19,7 +19,7 @@
     Route::get('kategorie/{slug}' , 'GroupController@index');
 
 
-    Route::group(['middleware' => 'auth'], function() {
+Route::group(['middleware' => 'auth'], function() {
 
     Route::get  ('kategorie', 'GroupController@createNewGroup');
     Route::post ('kategorie', 'GroupController@store');

@@ -16,9 +16,7 @@
             @if ($user->avatar)
                 <div class="col-md-4">
                     <img class="img-rounded " src="{{ asset('users/' . $user->id . '/' . $user->avatar ) }} ">
-
                     <button class="btn-info btn-xs"> <a href="{{ route('user.edit', $user->id) }}" >Zmeniť foto</a></button>
-
                 </div>
             @else
                 <div>
@@ -56,7 +54,7 @@
                 </div>
 
                     @empty
-                        <p>Nemáte žiadne príspevky</p>
+                        <p>Nemá žiadne príspevky</p>
                     @endforelse
 
         </div>

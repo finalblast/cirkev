@@ -99,6 +99,7 @@ class AppServiceProvider extends ServiceProvider
         });
 
 
+
 //// Poslať email pri uložení príspevku
 //        \App\Post::saved(function($post) {
 //
