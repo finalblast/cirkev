@@ -29,6 +29,8 @@
                 latLng.lat(),
                 latLng.lng()
             ].join(', ');
+            document.getElementById('lat').value = latLng.lat();
+            document.getElementById('lng').value = latLng.lng();
         }
 
         function updateMarkerAddress(str) {
@@ -37,6 +39,9 @@
 
         function initialize() {
             var latLng = new google.maps.LatLng(48.780035, 19.49248460937497);
+            if (document.getElementById('lat').value != '' && document.getElementById('lng').value != '') {
+                latLng = new google.maps.LatLng(document.getElementById('lat').value, document.getElementById('lng').value);
+            }
             var map = new google.maps.Map(document.getElementById('mapCanvas'), {
                 zoom: 7,
                 center: latLng,
@@ -357,6 +362,8 @@
             <b>Marker status:</b>
             <div id="markerStatus"><i>Kliknite na marker, držiac ťahajte.</i></div>
             <b>Táto pozícia bude uložená:</b>
+            {!! Form::hidden('lat', null, ['id' => 'lat']) !!}
+            {!! Form::hidden('lng', null, ['id' => 'lng']) !!}
             <div id="info"></div>
             <b>Closest matching address:</b>
             <div id="address"></div>
@@ -399,92 +406,65 @@
         </div>
 
         <div class="checkbox checkbox-primary">
-            <input name="membership" value="1" id="membership" type="checkbox">
-            <label for="membership">
-                Pomôžem vám zapojiť do spoločenstva
-            </label>
+            {!! Form::checkbox('membership', null, null, ['id' => 'membership']) !!}
+            {!! Form::label('membership', 'Pomôžem vám zapojiť do spoločenstva', []) !!}
         </div>
 
         <div class="checkbox checkbox-primary">
-            <input name="homegroupe" value="1" id="checkbox6" type="checkbox">
-            <label for="checkbox6">
-                Som členom domáceho stretávania a pozývam vás
-            </label>
+            {!! Form::checkbox('homegroupe', null, null, ['id' => 'homegroupe']) !!}
+            {!! Form::label('homegroupe', 'Som členom domáceho stretávania a pozývam vás', []) !!}
         </div>
 
         <div class="checkbox checkbox-primary">
-            <input name="healing" value="1" id="checkbox7" type="checkbox">
-            <label for="checkbox7">
-                Modlím sa za telesné uzdravenie
-            </label>
+            {!! Form::checkbox('healing', null, null, ['id' => 'healing']) !!}
+            {!! Form::label('healing', 'Modlím sa za telesné uzdravenie', []) !!}
         </div>
 
         <div class="checkbox checkbox-primary">
-            <input name="glososalia" value="1" id="checkbox8" type="checkbox">
-            <label for="checkbox8">
-                Hovorím jazykmy (glososália)
-            </label>
+            {!! Form::checkbox('glososalia', null, null, ['id' => 'glososalia']) !!}
+            {!! Form::label('glososalia', 'Hovorím jazykmy (glososália)', []) !!}
         </div>
 
         <div class="checkbox checkbox-primary">
-            <input name="exorsizmus" value="1" id="checkbox9" type="checkbox">
-            <label for="checkbox9">
-                Môžem sa modliť za duchovné oslobodenie od nečistých síl
-            </label>
+            {!! Form::checkbox('exorsizmus', null, null, ['id' => 'exorsizmus']) !!}
+            {!! Form::label('exorsizmus', 'Môžem sa modliť za duchovné oslobodenie od nečistých síl', []) !!}
         </div>
-
-
 
         <h4>Služobné dary</h4>
 
-
         <div class="checkbox checkbox-danger">
-            <input name="babtise" value="1" id="checkbox10" type="checkbox">
-            <label for="checkbox10">
-                Môžem pokrstiť
-            </label>
+            {!! Form::checkbox('babtise', null, null, ['id' => 'babtise']) !!}
+            {!! Form::label('babtise', 'Môžem pokrstiť', []) !!}
         </div>
 
         <div class="checkbox checkbox-danger">
-            <input name="marriage" value="1" id="checkbox11" type="checkbox">
-            <label for="checkbox11">
-                Môžem sobášiť
-            </label>
+            {!! Form::checkbox('marriage', null, null, ['id' => 'marriage']) !!}
+            {!! Form::label('marriage', 'Môžem sobášiť', []) !!}
         </div>
 
         <div class="checkbox checkbox-danger">
-            <input name="funebral" value="1" id="checkbox12" type="checkbox">
-            <label for="checkbox12">
-                Môžem vykonávať pohreb
-            </label>
+            {!! Form::checkbox('funebral', null, null, ['id' => 'funebral']) !!}
+            {!! Form::label('funebral', 'Môžem vykonávať pohreb', []) !!}
         </div>
 
         <div class="checkbox checkbox-danger">
-            <input name="diakon" value="1" id="checkbox13" type="checkbox">
-            <label for="checkbox13">
-                Vykonávam diakonskú službu milosrdenstva a pomoci
-            </label>
+            {!! Form::checkbox('diakon', null, null, ['id' => 'diakon']) !!}
+            {!! Form::label('diakon', 'Vykonávam diakonskú službu milosrdenstva a pomoci', []) !!}
         </div>
 
         <div class="checkbox checkbox-success">
-            <input name="discusion" value="1" id="checkbox14" type="checkbox">
-            <label for="checkbox14">
-                Odpovedám na otázky ohľadom viery a biblie
-            </label>
+            {!! Form::checkbox('discusion', null, null, ['id' => 'discusion']) !!}
+            {!! Form::label('discusion', 'Odpovedám na otázky ohľadom viery a biblie', []) !!}
         </div>
 
         <div class="checkbox checkbox-success">
-            <input name="meeting" id="checkbox15" type="checkbox" value="1">
-            <label for="checkbox15">
-                Som otvorený pre osobné stretnutie
-            </label>
+            {!! Form::checkbox('meeting', null, null, ['id' => 'meeting']) !!}
+            {!! Form::label('meeting', 'Som otvorený pre osobné stretnutie', []) !!}
         </div>
 
         <div class="checkbox checkbox-success">
-            <input name="phonenumber" id="checkbox16" type="checkbox" value="1">
-            <label for="checkbox16">
-                Zverejniť telefon?? Ctím si Pannu Máriu ako bohorodičku
-            </label>
+            {!! Form::checkbox('phonenumber', null, null, ['id' => 'phonenumber']) !!}
+            {!! Form::label('phonenumber', 'Zverejniť telefon?? Ctím si Pannu Máriu ako bohorodičku', []) !!}
         </div>
     </div>
 

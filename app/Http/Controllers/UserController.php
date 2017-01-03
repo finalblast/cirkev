@@ -37,12 +37,15 @@ class UserController extends Controller
             ->with('user', $user);
     }
 
-
-
-
     public function update (Request $request, $id) {
+
         $user = User::findOrFail($id);
-        $user->update( $request->all() );
+        $user->update( $request->all());
+        $chks = array('membership', 'homegroupe', 'healing', 'glososalia', 'exorsizmus', 'babtise', 'marriage', 'funebral', 'diakon', 'discusion', 'meeting', 'phonenumber');
+        foreach ($chks as $chk) {
+            $user->setAttribute($chk, ($request->has($chk)) ? true : false);
+        }
+        $user->save();
         $image = $request->file('avatar');
 
         if ($image !== null) {
