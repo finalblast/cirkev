@@ -2,6 +2,7 @@
 
 namespace App\Providers;
 
+use App\Denomination;
 use App\Post;
 use App\Group;
 use App\Comment;
@@ -80,6 +81,14 @@ class AppServiceProvider extends ServiceProvider
         $view->with('categories', Group::all() );
 
     });
+
+//        Profil Google map
+
+        view()->composer('user.edit', function($view)
+        {
+            $view->with('denomination', Denomination::lists('title', 'id') );
+
+        });
 
         view()->composer('posts.form', function($view)
         {

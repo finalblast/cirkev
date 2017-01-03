@@ -16,11 +16,11 @@
             @if ($user->avatar)
                 <div class="col-md-4">
                     <img class="img-rounded " src="{{ asset('users/' . $user->id . '/' . $user->avatar ) }} ">
-                    <button class="btn-info btn-xs"> <a href="{{ route('user.edit', $user->id) }}" >Zmeniť foto</a></button>
+                    <a href="{{ route('user.edit', $user->id) }}"><button class="btn-info btn-xs"> Zmeniť foto</button></a>
                 </div>
             @else
                 <div>
-                    <button class="btn-info btn-xs"> <a href="{{ route('user.edit', $user->id) }}" >Zmeniť foto</a></button>
+                    <a href="{{ route('user.edit', $user->id) }}" ><button class="btn-info btn-xs">Zmeniť foto</button></a>
                     <i class="fa fa-user fa-5x"></i> Profilová fotka
                 </div>
             @endif

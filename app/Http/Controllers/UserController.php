@@ -41,7 +41,6 @@ class UserController extends Controller
 
 
     public function update (Request $request, $id) {
-
         $user = User::findOrFail($id);
         $user->update( $request->all() );
         $image = $request->file('avatar');
@@ -63,9 +62,7 @@ class UserController extends Controller
 
         }
 
-        flash()->success('Uspešné upravené');
-//        return redirect('/');
-
+        flash()->success('Uspešné aktualizované');
 
         return redirect()->route('user.show', $user->slug);
 
